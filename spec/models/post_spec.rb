@@ -37,4 +37,18 @@ RSpec.describe Post, type: :model do
 
     it { expect(post).to have_many(:comments)  }
   end
+
+  describe 'Numericality and Lenght validation' do 
+    let(:post) { build(:post, phone_no: 9088090) }
+
+    it 'validates the numericality of phone_no' do
+      expect(post).to be_validate_numericality_of(:phone_no)
+    end
+
+    it 'validated the length of phone_no' do
+    end
+  end
+
+  describe 'length validation' do
+  end
 end
