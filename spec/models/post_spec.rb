@@ -39,13 +39,16 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'Numericality and Lenght validation' do 
-    let(:post) { build(:post, phone_no: 9088090) }
+    let(:post) { build(:post) }
 
-    it 'validates the numericality of phone_no' do
-      expect(post).to be_validate_numericality_of(:phone_no)
+    it 'validates the numericality and length of phone_no' do
+      expect(post).to validate_numericality_of(:phone_no)
+      expect(post).to validate_length_of(:phone_no).is_at_least(9)
     end
 
-    it 'validated the length of phone_no' do
+    it 'validates the numericality  and length of phone_no' do
+      should validate_numericality_of(:phone_no)
+      should validate_length_of(:phone_no).is_at_least(9)
     end
   end
 
